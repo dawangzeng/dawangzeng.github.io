@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>TCP/IP协议栈-2 // My New Hugo Site</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.92.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://dawangzeng.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TCP/IP协议栈-2"/>
+<meta name="twitter:description" content="C语言实现一个TCP/IP协议栈2：IPV4&amp;ICMPv4 文章内容： IPv4网络协议
+ICMP网络控制协议
+实现测试
+结论
+IPv4网络协议 ​	在我们的实现中，IP报文经过以太帧封装后，会将数据传输给目的地。IP网络协议是基于TCP/UDP传输协议发明的，它不像TCP协议那样所有的数据都是通过网络栈来处理的，IP协议是无连接的，因此IP数据可能会有不可达的情况。
+​	IP协议不保证成功传输，这是设计者故意设计成这样的，因为IP是提供一个基于传输协议的封装，如IP基于UDP，那么传输不能保证对端一定能收到；如果你想要传输是可信的，那么选择IP基于TCP，TCP协议能够处理丢包并且能确保所有报文都能够成功传输。
+IP报文头结构 IPv4头结构一般20个字节。头结构中还可以包含可选选项，但是我们的实现将它省略，IPv4报文头结构可以用以下C语言结构表示：
+struct iphdr { uint8_t version : 4; uint8_t ihl : 4; uint8_t tos; uint16_t len; uint16_t id; uint16_t flags : 3; uint16_t frag_offset : 13; uint8_t ttl; uint8_t proto; uint16_t csum; uint32_t saddr; uint32_t daddr; } __attribute__((packed)); 4-bit的version字段表示我们IP的版本，我们的实现这个字段是4，表示IPv4
+ICMP网络控制协议 实现测试 结论 "/>
+
+    <meta property="og:title" content="TCP/IP协议栈-2" />
+<meta property="og:description" content="C语言实现一个TCP/IP协议栈2：IPV4&amp;ICMPv4 文章内容： IPv4网络协议
+ICMP网络控制协议
+实现测试
+结论
+IPv4网络协议 ​	在我们的实现中，IP报文经过以太帧封装后，会将数据传输给目的地。IP网络协议是基于TCP/UDP传输协议发明的，它不像TCP协议那样所有的数据都是通过网络栈来处理的，IP协议是无连接的，因此IP数据可能会有不可达的情况。
+​	IP协议不保证成功传输，这是设计者故意设计成这样的，因为IP是提供一个基于传输协议的封装，如IP基于UDP，那么传输不能保证对端一定能收到；如果你想要传输是可信的，那么选择IP基于TCP，TCP协议能够处理丢包并且能确保所有报文都能够成功传输。
+IP报文头结构 IPv4头结构一般20个字节。头结构中还可以包含可选选项，但是我们的实现将它省略，IPv4报文头结构可以用以下C语言结构表示：
+struct iphdr { uint8_t version : 4; uint8_t ihl : 4; uint8_t tos; uint16_t len; uint16_t id; uint16_t flags : 3; uint16_t frag_offset : 13; uint8_t ttl; uint8_t proto; uint16_t csum; uint32_t saddr; uint32_t daddr; } __attribute__((packed)); 4-bit的version字段表示我们IP的版本，我们的实现这个字段是4，表示IPv4
+ICMP网络控制协议 实现测试 结论 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dawangzeng.github.io/posts/first/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-19T22:18:56+08:00" />
+<meta property="article:modified_time" content="2022-02-19T22:18:56+08:00" />
+
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://dawangzeng.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>My New Hugo Site</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">TCP/IP协议栈-2</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Feb 19, 2022
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h2 id="c语言实现一个tcpip协议栈2ipv4icmpv4">C语言实现一个TCP/IP协议栈2：IPV4&amp;ICMPv4</h2>
+<h3 id="文章内容">文章内容：</h3>
+<p><a href="#IPv4%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE">IPv4网络协议</a></p>
+<p><a href="#ICMP%E7%BD%91%E7%BB%9C%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE">ICMP网络控制协议</a></p>
+<p><a href="#%E5%AE%9E%E7%8E%B0%E6%B5%8B%E8%AF%95">实现测试</a></p>
+<p><a href="#%E7%BB%93%E8%AE%BA">结论</a></p>
+<h3 id="ipv4网络协议">IPv4网络协议</h3>
+<p>​	在我们的实现中，IP报文经过以太帧封装后，会将数据传输给目的地。IP网络协议是基于TCP/UDP传输协议发明的，它不像TCP协议那样所有的数据都是通过网络栈来处理的，IP协议是无连接的，因此IP数据可能会有不可达的情况。</p>
+<p>​	IP协议不保证成功传输，这是设计者故意设计成这样的，因为IP是提供一个基于传输协议的封装，如IP基于UDP，那么传输不能保证对端一定能收到；如果你想要传输是可信的，那么选择IP基于TCP，TCP协议能够处理丢包并且能确保所有报文都能够成功传输。</p>
+<h4 id="ip报文头结构">IP报文头结构</h4>
+<p>IPv4头结构一般20个字节。头结构中还可以包含可选选项，但是我们的实现将它省略，IPv4报文头结构可以用以下C语言结构表示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> iphdr {
+    <span style="color:#66d9ef">uint8_t</span> version : <span style="color:#ae81ff">4</span>;
+    <span style="color:#66d9ef">uint8_t</span> ihl : <span style="color:#ae81ff">4</span>;
+    <span style="color:#66d9ef">uint8_t</span> tos;
+    <span style="color:#66d9ef">uint16_t</span> len;
+    <span style="color:#66d9ef">uint16_t</span> id;
+    <span style="color:#66d9ef">uint16_t</span> flags : <span style="color:#ae81ff">3</span>;
+    <span style="color:#66d9ef">uint16_t</span> frag_offset : <span style="color:#ae81ff">13</span>;
+    <span style="color:#66d9ef">uint8_t</span> ttl;
+    <span style="color:#66d9ef">uint8_t</span> proto;
+    <span style="color:#66d9ef">uint16_t</span> csum;
+    <span style="color:#66d9ef">uint32_t</span> saddr;
+    <span style="color:#66d9ef">uint32_t</span> daddr;
+} __attribute__((packed));
+</code></pre></div><p>4-bit的version字段表示我们IP的版本，我们的实现这个字段是4，表示IPv4</p>
+<h3 id="icmp网络控制协议">ICMP网络控制协议</h3>
+<h3 id="实现测试">实现测试</h3>
+<h3 id="结论">结论</h3>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

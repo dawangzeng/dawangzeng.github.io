@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>https://dawangzeng.github.io/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Feb 2022 22:18:56 +0800</lastBuildDate><atom:link href="https://dawangzeng.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TCP/IP协议栈-2</title>
+      <link>https://dawangzeng.github.io/posts/first/</link>
+      <pubDate>Sat, 19 Feb 2022 22:18:56 +0800</pubDate>
+      
+      <guid>https://dawangzeng.github.io/posts/first/</guid>
+      <description>C语言实现一个TCP/IP协议栈2：IPV4&amp;amp;ICMPv4 文章内容： IPv4网络协议
+ICMP网络控制协议
+实现测试
+结论
+IPv4网络协议 ​	在我们的实现中，IP报文经过以太帧封装后，会将数据传输给目的地。IP网络协议是基于TCP/UDP传输协议发明的，它不像TCP协议那样所有的数据都是通过网络栈来处理的，IP协议是无连接的，因此IP数据可能会有不可达的情况。
+​	IP协议不保证成功传输，这是设计者故意设计成这样的，因为IP是提供一个基于传输协议的封装，如IP基于UDP，那么传输不能保证对端一定能收到；如果你想要传输是可信的，那么选择IP基于TCP，TCP协议能够处理丢包并且能确保所有报文都能够成功传输。
+IP报文头结构 IPv4头结构一般20个字节。头结构中还可以包含可选选项，但是我们的实现将它省略，IPv4报文头结构可以用以下C语言结构表示：
+struct iphdr { uint8_t version : 4; uint8_t ihl : 4; uint8_t tos; uint16_t len; uint16_t id; uint16_t flags : 3; uint16_t frag_offset : 13; uint8_t ttl; uint8_t proto; uint16_t csum; uint32_t saddr; uint32_t daddr; } __attribute__((packed)); 4-bit的version字段表示我们IP的版本，我们的实现这个字段是4，表示IPv4
+ICMP网络控制协议 实现测试 结论 </description>
+    </item>
+    
+  </channel>
+</rss>
